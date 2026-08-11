@@ -17,8 +17,6 @@ class CalificacionesTest {
         calificaciones = new Calificaciones();
     }
 
-    // ---------- 1. calcularPromedio() ----------
-
     @Test
     @DisplayName("Promedio de 15, 14, 16 -> 15")
     void calcularPromedio_notasAltas_retorna15() {
@@ -36,8 +34,6 @@ class CalificacionesTest {
     void calcularPromedio_notasMaximas_retorna18() {
         assertEquals(18, calificaciones.calcularPromedio(20, 18, 16));
     }
-
-    // ---------- 2. estaAprobado() ----------
 
     @Test
     @DisplayName("Promedio 15 -> aprobado")
@@ -63,18 +59,6 @@ class CalificacionesTest {
         assertFalse(calificaciones.estaAprobado(5));
     }
 
-    // ---------- 3. Reto: octavo caso de prueba ----------
-
-    /*
-     * Justificación: los 7 casos originales solo cubren números "redondos" o
-     * exactamente en el límite (13). Falta un caso que pruebe el valor
-     * inmediatamente DEBAJO del límite (12.99), que es un caso borde crítico
-     * porque un error de tipo "off-by-one" o de redondeo en la comparación
-     * (por ejemplo usar > en vez de >=) podría dar un resultado incorrecto
-     * justo en esa frontera. También se combina con un promedio calculado
-     * con decimales (14, 12, 13 -> 13.0 exacto) para validar que
-     * calcularPromedio() maneja bien divisiones no triviales.
-     */
     @Test
     @DisplayName("Caso borde: promedio 12.99 (justo debajo del límite) -> desaprobado")
     void estaAprobado_promedioJustoDebajoDelLimite_esFalse() {
